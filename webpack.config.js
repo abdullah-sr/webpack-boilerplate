@@ -40,7 +40,7 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            outputPath: 'images/',
+                            outputPath: '/images/',
                         },
                     },
                 ],
@@ -51,7 +51,7 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            outputPath: 'fonts/',
+                            outputPath: '/fonts/',
                         },
                     },
                 ],
@@ -61,7 +61,7 @@ const config = {
     plugins: [
         new HTMLPlugin({
             template: `${APP_DIR}/index.html`,
-            filename: `${BUILD_DIR }/index.html`,
+            filename: `${BUILD_DIR}/index.html`,
             hash: true,
         }),
 
