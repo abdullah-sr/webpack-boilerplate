@@ -28,6 +28,7 @@ const config = {
                 use: ExtractTextPlugin.extract({
                     fallback: { loader: 'style-loader' },
                     use: { loader: 'css-loader' },
+                    publicPath: '/../',
                 }),
             },
             {
@@ -40,7 +41,7 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            outputPath: '/images/',
+                            outputPath: './images/',
                         },
                     },
                 ],
@@ -51,7 +52,7 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                            outputPath: '/fonts/',
+                            outputPath: './fonts/',
                         },
                     },
                 ],
