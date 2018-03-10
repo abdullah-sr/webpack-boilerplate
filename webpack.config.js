@@ -11,7 +11,7 @@ const APP_DIR = path.resolve(__dirname, './src');
 
 const config = {
     cache: true,
-    entry: `${APP_DIR}/js/main.js`,
+    entry: ['babel-polyfill', `${APP_DIR}/js/main.js`],
     output: {
         path: BUILD_DIR,
         filename: 'js/app.js',
@@ -37,25 +37,21 @@ const config = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: './images/',
-                        },
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: './images/',
                     },
-                ],
+                },
             },
             {
                 test: /\.(woff|woff2|eot|ttf|svg)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: './fonts/',
-                        },
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: './fonts/',
                     },
-                ],
+                },
             },
         ],
     },
