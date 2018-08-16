@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -39,10 +40,15 @@ const config = {
             },
             {
                 test: /\.html$/,
-                use: 'html-loader',
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        attrs: ['img:src', 'link:href'],
+                    },
+                },
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(ico|png|jpg|gif|svg)$/,
                 use: {
                     loader: 'file-loader',
                     options: {
@@ -73,9 +79,21 @@ const config = {
     ],
     optimization: {
         minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+                uglifyOptions: {
+                    output: {
+                        comments: false,
+                    },
+                },
+            }),
             new OptimizeCSSAssetsPlugin({}),
         ],
     },
 };
+
+
 
 module.exports = config;
